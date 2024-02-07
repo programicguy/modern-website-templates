@@ -37,6 +37,7 @@ We welcome contributions from the community! Whether it's fixing a bug, adding a
 3. **Navigate to the project directory**: Move into the project directory using the following command:
 
     ```bash
+    mkdir modern-website-templates
     cd modern-website-templates
     ```
 
