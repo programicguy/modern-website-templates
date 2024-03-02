@@ -37,7 +37,6 @@ body {
 
 img {
     max-width: 100%;
-    max-width: 100%;
     height: auto;
 }
 
@@ -62,12 +61,28 @@ svg {
 .card-article {
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+}
+.card-article::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 1.2rem;
+}
+
+.card-article:hover::after {
+    opacity: 1;
 }
 
 .card-img {
-    width: 350px;
+    width: 380px;
     border-radius: 1.2rem;
-    cursor: pointer;
 }
 
 .card-data {
@@ -83,6 +98,7 @@ svg {
     box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
     opacity: 0;
     transition: opacity 1s ease;
+    z-index: 1;
 }
 
 .card-description {
