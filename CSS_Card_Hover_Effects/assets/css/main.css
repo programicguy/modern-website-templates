@@ -1,0 +1,232 @@
+/* Varibale CSS  */
+:root {
+    /* Colors  */
+    --primary-color: hsl(82, 60%, 28%);
+    --primary-text: hsl(0, 0%, 15%);
+    --secondary-text-color: hsl(0, 0%, 35%);
+    --body-color: hsl(0, 0%, 95%);
+    --container-color: hsl(0, 0%, 100%);
+
+    /* Font and typography  */
+    --primary-font: Arial, sans-serif;
+    --font-lg: 1.25rem;
+    --font-sm: .8rem;
+}
+
+/* Responsive typography  */
+
+@media screen and (min-width: 1120px) {
+    :root {
+        --font-lg: 1.5rem;
+        --font-sm: .850rem;
+    }
+}
+
+/* Base  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--primary-font);
+    background-color: var(--body-color);
+    color: var(--primary-text);
+}
+
+img {
+    max-width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+svg {
+    width: 14px;
+    fill: gold;
+}
+
+/* Card  */
+.container {
+    display: grid;
+    place-items: center;
+    margin-inline: 1.5rem;
+    padding-block: 5rem;
+}
+
+.card-container {
+    display: grid;
+    row-gap: 3.5rem;
+}
+
+.card-article {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 350px;
+    border-radius: 1.2rem;
+    cursor: pointer;
+}
+
+.card-data {
+    position: absolute;
+    bottom: -10rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: 300px;
+    background-color: var(--container-color);
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.card-description {
+    display: block;
+    font-size: var(--font-sm);
+    margin-bottom: .25rem;
+}
+
+.card-sale {
+    display: block;
+    font-size: var(--font-sm);
+    margin-bottom: .25rem;
+    font-weight: 600;
+}
+
+.card-title {
+    font-size: var(--font-lg);
+    font-weight: 600;
+    color: var(--primary-text);
+    margin-bottom: .75rem;
+    text-transform: capitalize;
+}
+
+.card-button {
+    text-decoration: none;
+    font-size: var(--font-sm);
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.card-button:hover {
+    text-decoration: underline;
+}
+
+.card-footer,
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .2rem 0;
+}
+
+/* Hover animation  */
+.card-article:hover .card-data {
+    animation: show-data 1s forwards;
+    opacity: 1;
+    transition: .3s ease;
+}
+
+.card-article:hover {
+    animation: remove-overflow 2s forwards;
+}
+
+.card-article:not(:hover) {
+    animation: show-overflow 2s forwards;
+}
+
+.card-article:not(:hover) .card-data {
+    animation: remove-data 1s forwards;
+}
+
+/* Card animatiion  */
+@keyframes show-data {
+    50% {
+        transform: translateY(-10rem);
+    }
+
+    100% {
+        transform: translateY(-7rem);
+    }
+}
+
+@keyframes remove-overflow {
+    to {
+        overflow: initial;
+    }
+}
+
+@keyframes remove-data {
+    0% {
+        transform: translateY(-7rem);
+    }
+
+    50% {
+        transform: translateY(-10rem);
+    }
+
+    100% {
+        transform: translateY(0.5rem);
+    }
+}
+
+@keyframes show-overflow {
+    0% {
+        overflow: initial;
+        pointer-events: none;
+    }
+
+    50% {
+        overflow: hidden;
+    }
+}
+
+/* Breakpointes  */
+/* For small devices  */
+@media screen and (max-width: 340px) {
+    .container {
+        margin-inline: 1rem;
+    }
+
+    .card-data {
+        width: 250px;
+        padding: 1rem;
+    }
+}
+
+/* For mediaum devices  */
+@media screen and (min-width: 768px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.5rem;
+    }
+}
+
+/* For larger devices  */
+
+@media screen and (min-width: 1120px) {
+    .container {
+        height: 100vh;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* For Extra larger devices  */
+
+@media screen and (min-width: 1440px) {
+    .container {
+        height: 100vh;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
